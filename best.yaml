@@ -1,9 +1,9 @@
 # 机场订阅
 proxy-providers:
   hongxing:
-    url: "xxx"
+    url: xxx
     type: http
-    interval: 3600
+    interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -12,25 +12,26 @@ proxy-providers:
       dialer-proxy: 轮询
       mptcp: true
       ip-version: ipv6-prefer
+      additional-suffix: "| hongxing"
 
-  优选:
-    url: "xxx"
-    type: http
-    interval: 3600
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 1200
-    override:
-      dialer-proxy: 轮询
-      mptcp: true
-      ip-version: ipv6-prefer
-      additional-suffix: "| 优选"
+#  优选:
+#    url: xxx
+#    type: http
+#    interval: 86400
+#    health-check:
+#      enable: true
+#      url: https://www.gstatic.com/generate_204
+#     interval: 1200
+#   override:
+#     dialer-proxy: 轮询
+#      mptcp: true
+#     ip-version: ipv6-prefer
+#      additional-suffix: "| 优选"
 
   自建:
-    url: "xxx"
+    url: xxx
     type: http
-    interval: 3600
+    interval: 86400
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -39,6 +40,7 @@ proxy-providers:
       dialer-proxy: 轮询
       mptcp: true
       ip-version: ipv6-prefer
+      additional-suffix: "| 自建"
       
 # 节点信息
 proxies:
@@ -208,6 +210,7 @@ proxy-groups:
   - {name: 💶 PayPal, <<: *pr}
 
   - name: 三大运营商
+#    type: smart
     type: url-test
     proxies:
     - 移动
@@ -299,16 +302,11 @@ rules:
   - RULE-SET,代理,🚀 默认代理
   - RULE-SET,代理白名单,🚀 默认代理
 
-  - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
   - RULE-SET,private_domain,直连
   - RULE-SET,apple_domain,🍎 Apple
-#  - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,ai,🤖 ChatGPT
 
   - RULE-SET,国外媒体,🌍 国外媒体
-  - RULE-SET,Epic,🎮 游戏平台
-  - RULE-SET,Origin,🎮 游戏平台
-  - RULE-SET,Steam,🎮 游戏平台
 
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,google_domain,🍀 Google
@@ -344,7 +342,6 @@ rule-anchor:
   class: &class {type: http, interval: 3600, behavior: classical, format: text}
 rule-providers: 
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-#  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/ProxyLite.list"}
 
   代理: { <<: *class, url: "https://raw.githubusercontent.com/GuangYu-yu/ACL4SSR/refs/heads/main/filtered.list"}
   代理白名单: { <<: *class, url: "https://raw.githubusercontent.com/GuangYu-yu/ACL4SSR/main/proxy.list"}
@@ -369,9 +366,6 @@ rule-providers:
   广告: { <<: *domain, url: "https://raw.githubusercontent.com/GuangYu-yu/AdBlock_Rule_For_Clash/refs/heads/main/adblock_reject.mrs"}
 
   国外媒体: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.list"}
-  Epic: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/ProxyLite.list"}
-  Origin: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/ProxyLite.list"}
-  Steam: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/ProxyLite.list"}
 
   ☁️ CFv6: { <<: *class, url: "https://raw.githubusercontent.com/GuangYu-yu/ACL4SSR/main/CloudflareCIDR-v6.list"}
   ☁️ CF: { <<: *class, url: "https://raw.githubusercontent.com/GuangYu-yu/ACL4SSR/main/CloudflareCIDR.list"}
@@ -431,25 +425,25 @@ rule-providers:
     path: "./rule_provider/China_Telecom_v6.txt"
   移动ASN:
     type: http
-    url: https://cdn.jsdelivr.net/gh/GuangYu-yu/chinaisp-cidr@main/mobile_asn.yaml
+    url: https://cdn.jsdelivr.net/gh/GuangYu-yu/chinaisp-cidr@main/Mobile_asn.yaml
     interval: 3600
     behavior: classical
     format: yaml
-    path: "./rule_provider/mobile_asn.yaml"
+    path: "./rule_provider/Mobile_asn.yaml"
   联通ASN:
     type: http
-    url: https://cdn.jsdelivr.net/gh/GuangYu-yu/chinaisp-cidr@main/unicom_asn.yaml
+    url: https://cdn.jsdelivr.net/gh/GuangYu-yu/chinaisp-cidr@main/Unicom_asn.yaml
     interval: 3600
     behavior: classical
     format: yaml
-    path: "./rule_provider/unicom_asn.yaml"
+    path: "./rule_provider/Unicom_asn.yaml"
   电信ASN:
     type: http
-    url: https://cdn.jsdelivr.net/gh/GuangYu-yu/chinaisp-cidr@main/telecom_asn.yaml
+    url: https://cdn.jsdelivr.net/gh/GuangYu-yu/chinaisp-cidr@main/Telecom_asn.yaml
     interval: 3600
     behavior: classical
     format: yaml
-    path: "./rule_provider/telecom_asn.yaml"
+    path: "./rule_provider/Telecom_asn.yaml"
 
   google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
