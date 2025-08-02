@@ -295,7 +295,10 @@ rules:
   - RULE-SET,Advertising,净化
   - RULE-SET,sr_ad_only,净化
   - RULE-SET,广告,净化
+  - RULE-SET,ad,净化
   
+  - RULE-SET,ai,🤖 ChatGPT
+  - RULE-SET,Steam,🎮 游戏平台
   - RULE-SET,☁️ CFv6,☁️ Cloudflare
   - RULE-SET,☁️ CF,☁️ Cloudflare
   - RULE-SET,☁️ CF_domains,☁️ Cloudflare
@@ -304,10 +307,8 @@ rules:
 
   - RULE-SET,private_domain,直连
   - RULE-SET,apple_domain,🍎 Apple
-  - RULE-SET,ai,🤖 ChatGPT
 
   - RULE-SET,国外媒体,🌍 国外媒体
-  - RULE-SET,Steam,🎮 游戏平台
 
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,google_domain,🍀 Google
@@ -365,6 +366,7 @@ rule-providers:
   Advertising: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Advertising/Advertising.list"}
   sr_ad_only: { <<: *class, url: "https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/sr_ad_only.conf"}
   广告: { <<: *domain, url: "https://raw.githubusercontent.com/GuangYu-yu/AdBlock_Rule_For_Clash/refs/heads/main/adblock_reject.mrs"}
+  ad: { <<: *class, url: "https://raw.githubusercontent.com/LM-Firefly/Rules/refs/heads/master/Adblock/Adblock.list"}
 
   国外媒体: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.list"}
   Steam: { <<: *class, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Steam/Steam.list"}
