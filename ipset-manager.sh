@@ -5,7 +5,7 @@ mkdir -p /etc/ipset_configs
 
 # 写入 vars.sh 脚本
 cat << 'EOF' > /etc/ipset_configs/vars.sh
-#!/bin/sh
+#!/bin/bash
 
 CFG_DIR="/etc/ipset_configs"
 
@@ -72,7 +72,7 @@ EOF
 
 # 写入 init 启动脚本
 cat << 'EOF' > /etc/init.d/ipset_load
-#!/bin/sh /etc/rc.common
+#!/bin/bash /etc/rc.common
 
 START=99
 start() {

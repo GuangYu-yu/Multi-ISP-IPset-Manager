@@ -5,7 +5,7 @@ mkdir -p /etc/nftables_configs
 
 # 写入 vars.sh 脚本
 cat << 'EOF' > /etc/nftables_configs/vars.sh
-#!/bin/sh
+#!/bin/bash
 
 CFG_DIR="/etc/nftables_configs"
 
@@ -90,7 +90,7 @@ EOF
 
 # 写入 init 启动脚本
 cat << 'EOF' > /etc/init.d/nftables_load
-#!/bin/sh /etc/rc.common
+#!/bin/bash /etc/rc.common
 
 START=99
 start() {
